@@ -1,3 +1,17 @@
+# Flashcards App
+Flashcards App is a web application that allows users to create topics, quizzes, and cards for studying or sharing knowledge. This application leverages React, Redux Toolkit, and CSS to deliver an interactive and user-friendly experience. This was one of the project challenges that I completed of Codecademy's front-end engineering path.
+
+## Features
+* Topics Management: Create and manage topics with unique icons and associated quizzes.
+* Quizzes: Create quizzes under topics and associate cards with them.
+* Cards: Add cards with "front" and "back" sides to quizzes for studying purposes.
+* Interactive UI: Flip cards to view their back and test your memory.
+* Dynamic Navigation: Easily navigate between topics, quizzes, and the new quiz form.
+
+## Demo
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
