@@ -3,10 +3,10 @@ import { useSelector } from "react-redux";
 import { Link, useParams, Navigate } from "react-router-dom";
 import Card from "../cards/Card";
 import ROUTES from "../../app/routes";
-// import quiz selector
+import { selectQuizzes } from "./quizzesSlice";
 
 export default function Quiz() {
-  const quizzes = {}; // replace this with a call to your selector to get all the quizzes in state
+  const quizzes = useSelector(selectQuizzes);
   const { quizId } = useParams();
   const quiz = quizzes[quizId];
 
@@ -18,6 +18,7 @@ export default function Quiz() {
   return (
     <section>
       <h1>{quiz.name}</h1>
+      <p>Topic ID: {quiz.topicId}</p>
       <ul className="cards-list">
         {quiz.cardIds.map((id) => (
           <Card key={id} id={id} />

@@ -6,7 +6,7 @@ const initialState = {
 
 const quizzesSlice = createSlice({
   name: 'quizzes',
-  initialState,
+  initialState: { quizzes: {} },
   reducers: {
     addQuiz: (state, action) => {
       const { id, name, topicId, cardIds } = action.payload;
