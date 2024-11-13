@@ -6,6 +6,8 @@ import ROUTES from "../app/routes";
 
 import { addQuiz } from "../features/quizzes/quizzesSlice";
 import { addQuizIdToTopic, selectTopics } from "../features/topics/topicsSlice";
+import { addCard } from "../features/cards/cardsSlice";
+
 
 export default function NewQuizForm() {
   const [name, setName] = useState("");
@@ -19,17 +21,18 @@ export default function NewQuizForm() {
     e.preventDefault();
     if (!name || !topicId) return;
 
-    const cardIds = [];
-
-    // create the new cards here and add each card's id to cardIds
-    // create the new quiz here
+    const cardIds = cards.map((card) => {
+      const cardId = uuidv4();
+      dispatch(addCard({ id: cardId, front: card.front, back: card.back }));
+      return cardId;
+    });
 
     const quizId = uuidv4();
     const newQuiz = {
       id: quizId,
       name,
       topicId,
-      cardIds: [] 
+      cardIds,
     };
     
     
@@ -83,11 +86,12 @@ export default function NewQuizForm() {
           <div key={index} className="card-front-back">
             <input
               id={`card-front-${index}`}
-              value={cards[index].front}
+              value={card.front}
               onChange={(e) =>
                 updateCardState(index, "front", e.currentTarget.value)
               }
               placeholder="Front"
+              required
             />
 
             <input
@@ -97,6 +101,7 @@ export default function NewQuizForm() {
                 updateCardState(index, "back", e.currentTarget.value)
               }
               placeholder="Back"
+              required
             />
 
             <button

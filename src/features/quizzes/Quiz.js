@@ -18,7 +18,6 @@ export default function Quiz() {
   return (
     <section>
       <h1>{quiz.name}</h1>
-      <p>Topic ID: {quiz.topicId}</p>
       <ul className="cards-list">
         {quiz.cardIds.map((id) => (
           <Card key={id} id={id} />
