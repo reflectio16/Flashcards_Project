@@ -10,10 +10,9 @@ export default function Quiz() {
   const { quizId } = useParams();
   const quiz = quizzes[quizId];
 
-  if(!quiz) {
-    return <Navigate to={ROUTES.quizzesRoute()} replace/>
+  if (!quiz) {
+    return <Navigate to={ROUTES.quizzesRoute()} replace />;
   }
-
 
   return (
     <section>

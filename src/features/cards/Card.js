@@ -1,16 +1,26 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-// import selector
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { selectCardById, flipCard } from "./cardsSlice";
 
 export default function Card({ id }) {
-  const card = {}; // replace this with a call to your selector to get a card by id
-  const [flipped, setFlipped] = useState(false);
+  const card = useSelector((state) => selectCardById(state, id));
+  const dispatch = useDispatch();
+
+  if (!card) return <div>Card not found</div>;
 
   return (
-    <li>
-      <button className="card" onClick={(e) => setFlipped(!flipped)}>
-        {flipped ? card.back : card.front}
-      </button>
-    </li>
+    <div
+      className={`card ${card.flipped ? "flipped" : ""}`}
+      onClick={() => dispatch(flipCard(card.id))}
+    >
+      <div className="card-inner">
+        <div className="card-front">
+          {card.front}
+        </div>
+        <div className="card-back">
+          {card.back}
+        </div>
+      </div>
+    </div>
   );
 }
